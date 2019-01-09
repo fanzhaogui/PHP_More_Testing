@@ -1,3 +1,13 @@
+## 准备工作
+
+[composer 安装依赖](https://packagist.org/packages/phpoffice/phpspreadsheet)
+
+因为phpoffice/phpexcel停止维护
+> This package is abandoned and no longer maintained. The author suggests using the phpoffice/phpspreadsheet package instead.
+
+所以用PhpSpreadsheet
+[github地址](https://github.com/PHPOffice/PhpSpreadsheet)
+
 > 1 准备测试数据
 
     create database if not exists phpexec;

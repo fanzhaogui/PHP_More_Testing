@@ -89,3 +89,28 @@
 
 
 ### 导入    
+
+1. 新建表
+
+
+    CREATE TABLE `user` (
+      `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+      `name` varchar(255) NOT NULL DEFAULT '',
+      `age` tinyint(4) NOT NULL DEFAULT '0',
+      PRIMARY KEY (`id`)
+    ) ENGINE=MyISAM AUTO_INCREMENT=97 DEFAULT CHARSET=utf8;
+
+
+2. 准备导入的文件
+
+    /public/file/file_use.xls;
+
+![image](../../public/static/image/demo_phpexcel/user.png)
+    
+3. 读取文件
+
+
+4. 插入数据库
+
+![image](../../public/static/image/demo_phpexcel/user_table.png)
+    

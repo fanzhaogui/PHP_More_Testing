@@ -1,3 +1,41 @@
+### 大量数据的导入和导出
+
+> 问题
+
+    
+    数据库连接超时，PHP运行时间超时，内存不够
+    
+    1. 最近遇到一个问题：数据量不大，
+    总共接近4千条，每条数据的字段不超过10个，
+    但是数据设计的表较多，一个sql的查询时间接近1分钟
+    拿到的数据不能直接导出，还需要做一些判断和查一些相关的表，尝试多次（解决思路）都是超时
+    这里问题的关键还是超时：所有将数据查询和处理，导出分为两个部分，
+    第一步，查询出所有的数据处理完之后，存入redis中
+    第二步，从redis中拿出数据，导出到excel
+    * 遗留问题，当数据逐渐增多时，第一步还是会超时，因为我是一次性查出所有的数据
+    
+    
+    
+> 理思路
+
+
+    set_time_limit(0);
+    
+    ini_set('memory_limit', '1024M');
+    
+    $cacheMethod = PHPExcel_CachedObjectStorageFactory:: cache_to_phpTemp;
+    $cacheSettings = array(
+        'memoryCacheSize' => '8MB',
+        'cacheTime' => 600,
+    );
+    PHPExcel_Settings::setCacheStorageMethod($cacheMethod, $cacheSettings);
+    
+    -- ob_flush();
+    -- flush();
+
+    -- yield
+    
+
 ## 准备工作
 
 [composer 安装依赖](https://packagist.org/packages/phpoffice/phpspreadsheet)
@@ -47,7 +85,7 @@
         file28 int not null default 0,
         file29 int not null default 0
     );
-    
+    // 这里设置超过26个字段的原因AA,AB
     insert into student (name) values("zhangsan"),("lisi"),("wangwu");
     
     /** 先重复两次够用 **/
@@ -65,6 +103,8 @@
 5. 导出到文件，并下载
 
 > 表头的设置
+
+**请结合代码查看以下效果**
 
 效果 1-1
 ![image](../../public/static/image/demo_phpexcel/header01.png)

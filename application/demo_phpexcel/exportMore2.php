@@ -1,5 +1,5 @@
 <?php
-ob_start();
+ob_start(); // 打开缓存区
 
 set_time_limit(0);
 ini_set("memory_limit", '2048M');
@@ -19,6 +19,12 @@ $capsule->setAsGlobal();
 $count = $capsule::table("student")->count();
 
 // 1. 文件名
+$filename = "test.zip";
+header("Cache-Control: max-age=0");
+header("Content-Description: File Transfer");
+header('Content-disposition: attachment; filename=' . basename($filename)); // 文件名
+header("Content-Type: application/zip"); // zip格式的
+header("Content-Transfer-Encoding: binary"); //
 // 2. 表头
 // 3. 数据
 
@@ -63,7 +69,7 @@ for ($i = 0; $i < $total; $i ++) {
 
 //进行多个文件压缩
 $zip = new ZipArchive();
-$filename = "test.zip";
+
 $zip->open($filename, ZipArchive::CREATE);   //打开压缩包
 foreach ($filenameArr as $file) {
     $zip->addFile($file, basename($file));   //向压缩包中添加文件
@@ -74,11 +80,8 @@ foreach ($filenameArr as $file) {
     unlink($file); //删除csv临时文件
 }
 //输出压缩文件提供下载
-//header("Cache-Control: max-age=0");
-//header("Content-Description: File Transfer");
-//header('Content-disposition: attachment; filename=' . basename($filename)); // 文件名
-//header("Content-Type: application/zip"); // zip格式的
-//header("Content-Transfer-Encoding: binary"); //
-//header('Content-Length: ' . filesize($filename)); //
-//@readfile($filename);//输出文件;
-//unlink($filename); //删除压缩包临时文件
+header('Content-Length: ' . filesize($filename)); //
+@readfile($filename);//输出文件;
+unlink($filename); //删除压缩包临时文件
+
+ob_end_flush();// 输出全部内容到浏览器

@@ -34,7 +34,24 @@
     -- flush();
 
     -- yield
+
+> 解决思路
+
+1. 更换文件格式
+
+
+    .csv文件的导出
     
+[百万数据的导出.csv以及限制和坑](exportMore.php)
+
+[.csv导出的优化](exportMore2.php)
+
+![效果图](../../public/static/image/demo_phpexcel/downloadcsv.gif)
+
+2. 解决查询耗时？？
+
+
+################################################## 以下是Excel的导出    
 
 ## 准备工作
 

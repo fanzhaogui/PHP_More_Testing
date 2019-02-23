@@ -1,4 +1,5 @@
 <?php
+ob_start();
 
 set_time_limit(0);
 ini_set("memory_limit", '2048M');
@@ -21,21 +22,12 @@ $count = $capsule::table("student")->count();
 // 2. 表头
 // 3. 数据
 
-// 打开php标准输出流以写入追加的的方式
-// $fp = fopen("php://output", "a");
-
 $sqlLimit = 100000; // 每次只从数据库取10w条以防变量缓存太大
 $limit = 100000; // 每隔10w行，刷新一下输出buffer，不要太大，也不要太小
 $cnt = 0; // buffer计数器
 // 1. 文件名，我们就简单的使用 时间
 $filenameArr = [];
-$filename = "file".date("YmdHis").".csv";
 
-
-// 输出Excel文件头，可把user.csv换成你要的文件名
-header('Content-Type: application/vnd.ms-excel;charset=utf-8');
-header('Content-Disposition: attachment;filename="' . $filename . '"');
-header('Cache-Control: max-age=0');
 
 $title = ["序号", "学号", "姓名", "年龄"];
 foreach ($title as $key=> $item) {
@@ -67,7 +59,6 @@ for ($i = 0; $i < $total; $i ++) {
         fputcsv($fp, $rows);
     }
     fclose($fp);  //每生成一个文件关闭
-
 }
 
 //进行多个文件压缩
@@ -83,11 +74,11 @@ foreach ($filenameArr as $file) {
     unlink($file); //删除csv临时文件
 }
 //输出压缩文件提供下载
-header("Cache-Control: max-age=0");
-header("Content-Description: File Transfer");
-header('Content-disposition: attachment; filename=' . basename($filename)); // 文件名
-header("Content-Type: application/zip"); // zip格式的
-header("Content-Transfer-Encoding: binary"); //
-header('Content-Length: ' . filesize($filename)); //
-@readfile($filename);//输出文件;
-unlink($filename); //删除压缩包临时文件
+//header("Cache-Control: max-age=0");
+//header("Content-Description: File Transfer");
+//header('Content-disposition: attachment; filename=' . basename($filename)); // 文件名
+//header("Content-Type: application/zip"); // zip格式的
+//header("Content-Transfer-Encoding: binary"); //
+//header('Content-Length: ' . filesize($filename)); //
+//@readfile($filename);//输出文件;
+//unlink($filename); //删除压缩包临时文件

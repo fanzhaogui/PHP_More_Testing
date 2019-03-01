@@ -35,3 +35,14 @@
 [1.PHPExcel的导入和导出](./application/demo_phpexcel)
 
 [2.for,foreach和array_walk的比较](./application/cycle)
+
+
+
+> 概念
+
+[1.PHP性能优化利器：生成器 yield理解](./application/yield)
+
+    优点：
+    - 生成器会对PHP应用的性能有非常大的影响
+    - PHP代码运行时节省大量的内存
+    - 比较适合计算大量的数据

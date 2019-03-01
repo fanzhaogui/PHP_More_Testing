@@ -1,99 +1,115 @@
 <?php
 
-// 创建一个函数
-function createRange($number)
+ini_set("max_execution_time", 0);
+
+require __DIR__."/../../vendor/autoload.php";
+
+
+function getPageData()
 {
-    $data = [];
-    for ($i = 0; $i < $number; $i++) {
-        $data[] = time();
-    }
-    return $data;
-}
-echo "初始: ".memory_get_usage()." 字节 <br/>";
-$result = createRange(10);
-foreach ($result as $value) {
-    sleep(1);//这里停顿1秒，后面有用
-    echo $value,"<br />";
-}
-echo "最终: ".memory_get_usage()." 字节 <br/>";
-echo "内存总量: ".memory_get_peak_usage()." 字节 <br/>";
-/***********************
-初始: 366360 字节
-1551425156
-1551425156
-1551425156
-1551425156
-1551425156
-1551425156
-1551425156
-1551425156
-1551425156
-1551425156
-最终: 367056 字节
-内存总量: 401616 字节
- *************************/
-
-
-
-
-
-
-# continue...
-// createrRange传入$number= 10000000（1千万）
-
-// 1. 尝试正常情况下的运行
-// ini_set("memory_limit", '2048M'); -- 设置了也并没有用
-//$result = createRange(10000000);
-//foreach ($result as $value) {
-//    // sleep(1);//这里停顿1秒
-//    echo $value,"<br />";
-//}
-// TODO 报错 Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 4096 bytes)
-
-// 2. 设置 ini_set("memory_limit", '2048M'); -- 设置了也并没有用
-// Fatal error: Allowed memory size of 2147483648 bytes exhausted (tried to allocate 4096 bytes) in
-
-
-// 3. 使用生成器
-
-// 修改函数
-/*function createRangeV2($number)
-{
-    for ($i = 0; $i < $number; $i ++) {
-        yield time();
+    $capsule = new Illuminate\Database\Capsule\Manager();
+    $capsule->addConnection([
+        'driver'    => 'mysql',
+        'host'      => 'localhost',
+        'database'  => 'phpexec',
+        'username'  => 'root',
+        'password'  => '123456',
+        'charset'   => 'utf8',
+    ]);
+    $capsule->setAsGlobal();
+    $count = $capsule::table("teacher")->count();
+    $sqlLimit = 10400;
+    $page = $count/$sqlLimit;
+    for($i = 0; $i <= $page; $i ++) {
+        yield $capsule::table("teacher")->offset($i * $sqlLimit)->limit($sqlLimit)->get()->toArray();
     }
 }
 
-echo "初始: ".memory_get_usage()." 字节 <br/>";
-
-$result = createRangeV2(10);
-foreach ($result as $value) {
-    sleep(1);//这里停顿1秒
-    echo $value,"<br />";
-}
-echo "最终: ".memory_get_usage()." 字节 <br/>";
-echo "内存总量: ".memory_get_peak_usage()." 字节 <br/>";
+/*
+CREATE TABLE `teacher`  (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `StuNo` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `StuName` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `StuAge` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`ID`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+INSERT INTO `teacher` VALUES (1, 'A001', '小明', 22);
+INSERT INTO `teacher` VALUES (2, 'A005', '小李', 23);
+INSERT INTO `teacher` VALUES (3, 'A007', '小红', 24);
+INSERT INTO `teacher` VALUES (4, 'A003', '小明', 22);
+INSERT INTO `teacher` VALUES (5, 'A002', '小李', 23);
+INSERT INTO `teacher` VALUES (6, 'A004', '小红', 24);
+INSERT INTO `teacher` VALUES (7, 'A006', '小王', 25);
+INSERT INTO `teacher` VALUES (8, 'A008', '乔峰', 27);
+INSERT INTO `teacher` VALUES (9, 'A009', '欧阳克', 22);
+INSERT INTO `teacher` VALUES (10, 'A010', '老顽童', 34);
+INSERT INTO `teacher` VALUES (11, 'A011', '黄老邪', 33);
+-- 多执行几次，可以得到大量的实验数据
+insert into teacher (StuNo, StuName, StuAge) select StuNo,StuName,StuAge from teacher;
 */
-// 查看内存使用  memory_get_usage  memory_get_peak_usage
+
+$filename = "test.zip";
+header("Cache-Control: max-age=0");
+header("Content-Description: File Transfer");
+header('Content-disposition: attachment; filename=' . basename($filename)); // 文件名
+header("Content-Type: application/zip"); // zip格式的
+header("Content-Transfer-Encoding: binary"); //
+
+$filenameArr = [];
+$title = ["序号", "学号", "姓名", "年龄"];
+foreach ($title as $key=> $item) {
+    $title[$key] = iconv("UTF-8", "GB2312//IGNORE", $item);
+}
 
 
-// TODO 查看输出的$value值，此次的每个输出都间隔1秒，而上面的输出结果是相同多个
-/********
-初始: 365832 字节
-1551424947
-1551424948
-1551424949
-1551424950
-1551424951
-1551424952
-1551424953
-1551424954
-1551424955
-1551424956
-最终: 366216 字节
-内存总量: 401336 字节
- ******** */
+$j = 0;
+$cont = 0;
+foreach (getPageData() as $k => $teachers) {
+    if ($cont == 100) {
+        $j ++;
+        $cont = 0;
+    }
+    $currentFileName = "test_".$j.".csv";
+    $fp = fopen( $currentFileName, "w"); //生成临时文件
+    $filenameArr[] = $currentFileName;
 
-// 内存对比，可以修改$num的值，来查看
+    if ($cont == 0) {
+         fputcsv($fp, $title);
+    }
+    foreach ($teachers as $key => $teacher) {
+        $rows = [];
+        $rows[] = iconv("UTF-8", "GBK", $teacher->ID);
+        $rows[] = iconv("UTF-8", "GBK", $teacher->StuNo);
+        $rows[] = iconv("UTF-8", "GBK", $teacher->StuName);
+        $rows[] = iconv("UTF-8", "GBK", $teacher->StuAge);
+         fputcsv($fp, $rows);
+    }
+    if ($cont == 99) { // 每个cvs文件最后一次写入后关闭
+         fclose($fp);
+    }
+    $cont ++;
+}
 
-## 未使用生成器时： cerateRange 函数内的 for 循环结构被很快的放到 $data 中，并且立即返回
+if ($cont != 100) { // 最后一个文件如果没有达到
+    fclose($fp);
+}
+
+//进行多个文件压缩
+$zip = new ZipArchive();
+
+$zip->open($filename, ZipArchive::CREATE);   //打开压缩包
+foreach ($filenameArr as $file) {
+    $zip->addFile($file, basename($file));   //向压缩包中添加文件
+}
+$zip->close();  //关闭压缩包
+
+foreach ($filenameArr as $file) {
+    unlink($file); //删除csv临时文件
+}
+//输出压缩文件提供下载
+header('Content-Length: ' . filesize($filename)); //
+@readfile($filename);//输出文件;
+unlink($filename); //删除压缩包临时文件
+
+
+

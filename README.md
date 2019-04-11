@@ -40,7 +40,7 @@
 
 > 相关概念
 
-[1.PHP性能优化利器：生成器 yield 关键字理解和运用](./application/yield)
+[1.PHP性能优化利器：生成器 yield理解，实战读取5G文件导出百万数据](./application/yield)
 
     优点：
     - 生成器会对PHP应用的性能有非常大的影响

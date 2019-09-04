@@ -29,6 +29,17 @@ var_dump($ret3);
 //];
 
 
+// rid为键，age 为值 rid值相同的，会覆盖
+$ret4 = array_column($rules, 'rid', 'age');
+var_dump($ret4);
+// 以上相当于
+$ret5 = [];
+foreach ($rules as $r) {
+    $ret5[$r['rid']] = $r['age'];
+}
+var_dump($ret5);
+
+
 // 当取的下标对应的是数组
 $a1 = [
     [

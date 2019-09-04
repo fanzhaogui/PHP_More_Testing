@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>section 1.2.2</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /*清除浮动：一般解决父子元素坍塌的问题*/
+            background-color: #777777;
+        }
+        #spa {
+            position: absolute;
+            background-color: #ffffff;
+            top: 18px;
+            right: 18px;
+            bottom: 18px;
+            left: 18px;
+            border-radius: 18px;
+            /*width: 100%;*/
+            /*height: 100%;*/
+        }
+
+        .spa-slide{
+            /*大小*/
+            width: 300px;
+            height: 16px;
+            /*位置确认*/
+            position: absolute;
+            right: 2px;
+            bottom: 0;
+            /*圆角设置*/
+            border-radius: 10px 0 0 0;
+            /*鼠标样式*/
+            cursor: pointer;
+            /*背景颜色*/
+            background-color: #FFFF00;
+        }
+    </style>
+
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script>
+        var spa = (function ($) {
+            var configMap = {
+                    extended_height : 434,
+                    extended_title : 'Click to retract',
+                    retracted_height : 16,
+                    retracted_title : 'Click to extend',
+                    template_html : '<div class="spa-slide"><\/div>',
+                },
+                $chatSlider, // 聊天框
+                toggleSlider, // 弹起
+                onClickSlider, // 收拢
+                initModule; // 初始化
+
+            // 添加展开聊天滑块的代码。检测滑块的高度。判断他是否是完全收起的。
+            // 如果是的话，就用jQuery动画将它展开
+            toggleSlider = function () {
+                var slider_height = $chatSlider.height();
+                console.log(slider_height)
+                if (slider_height == configMap.retracted_height) {
+                    $chatSlider
+                        .animate({height: configMap.extended_height})
+                        .attr('title', configMap.extended_title);
+                    return true;
+                }
+                else if (slider_height == configMap.extended_height) {
+                    $chatSlider
+                        .animate({height: configMap.retracted_height})
+                        .attr('title', configMap.retracted_title);
+                }
+                return false;
+            };
+            // 判断他是否完全展开
+            // 如果是就用jQuery将它收起
+            onClickSlider = function (event) {
+                toggleSlider();
+                return false;
+            };
+
+            // 添加滑块模块的HTML代码，来填充$container
+            initModule = function ($container) {
+                $container.html(configMap.template_html);
+                $chatSlider = $container.find('.spa-slide');
+                console.log(123)
+                $chatSlider
+                    .attr('title', configMap.retracted_title)
+                    .click(onClickSlider);
+                return true;
+            };
+
+            // 通过返回spa名字空间中的对象，导出公开方法
+            return {initModule: initModule};
+        })(jQuery);
+
+        // 使用jQuery的ready方法，启动单页应用
+        jQuery(document).ready(
+            function () {
+                spa.initModule(jQuery('#spa'));
+            }
+        );
+    </script>
+</head>
+<body>
+<div id="spa">
+    <!--<div class="spa-slide"></div>-->
+</div>
+
+<script>
+    // 基于类的对象  php等
+
+    // 基于原型的对象
+    var proto = {
+        sentence : 4,
+        probation : 2
+    };
+
+//    var firstPrisoner = Object.create(proto)
+//    firstPrisoner.name = 'Joe';
+//    firstPrisoner.id = '12A';
+//
+//    var secondPrisoner = Object.create(proto)
+//    secondPrisoner.name = "Sam";
+//    secondPrisoner.id = '2BC';
+
+    // 工厂函数创建
+    var makePrisoner = function (name, id) {
+        var prisoner = Object.create(proto);
+        prisoner.name = name;
+        prisoner.id = id;
+        return prisoner;
+    }
+
+    var firstPrisoner = makePrisoner('Joe', '12A');
+    var secondPrisoner = makePrisoner('Sam', '2BC');
+
+</script>
+</body>
+</html>

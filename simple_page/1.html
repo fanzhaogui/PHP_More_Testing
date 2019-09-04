@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    /*console.log(global_var); // 被定义，值为 undefined
+
+    var global_var = "123123123";
+
+    console.log(global_var); // 123123123
+
+    // 执行环境
+
+    function  test() {
+        // 变量提升
+        console.log(global_var1);  // 被定义，值为 undefined
+
+        var global_var1 = "123123123";
+
+        console.log(global_var1); // 123123123
+    }
+    test()
+
+    var prison = (function () {
+        return 'Mike in prison';
+    })()
+
+    console.log(prison)*/
+
+    /*闭包 -- 防止垃圾回收机制： 函数体内，使用ajax，在success中使用的var that = this, that闭包*/
+//    var makePrison = function (prisoner) {
+//        return function () {
+//            return prisoner;
+//        }
+//    };
+//    // 执行环境变量的引用计数从 0 变为 1
+//    var joshPrison = makePrison('Join Powell');
+//
+//    var mikePrison = makePrison('Mike Mikowshi');
+//
+//    console.log(typeof joshPrison);
+//    console.log(joshPrison());
+//
+//    console.log(typeof mikePrison);
+//    console.log(mikePrison());
+//
+//    console.log(makePrison())
+
+
+    /*执行环境对象: 以下代码在控制台运行*/
+    var curryLog, logHello, logStayinAlive, logGoodbye;
+
+    curryLog = function (arg_text) {
+        var log_it = function () {
+            console.log(arg_text)
+        };
+        return log_it;
+    };
+
+    logHello = curryLog("hello");
+    logStayinAlive = curryLog("stayin alive");
+    logGoodbye = curryLog("goodbye");
+
+    curryLog("fred");
+
+    logHello();
+    logStayinAlive();
+    logGoodbye();
+    logHello();
+
+    delete window.logHello;
+    delete window.logStayinAlive;
+
+    logGoodbye();
+    console.log("logStayinAlive");
+    logStayinAlive(); // undefined
+
+
+
+</script>
+</body>
+</html>

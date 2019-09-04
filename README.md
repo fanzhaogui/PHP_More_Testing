@@ -36,7 +36,9 @@
 
 [2.for,foreach和array_walk的比较](./application/cycle)
 
+[3.笛卡尔积-商品库存添加时可以用上](./todos/dikaerji.php)
 
+[4. arrray_cloumn对二维数组的操作](./todos/array_column.php)
 
 > 相关概念
 

@@ -44,7 +44,7 @@
 
 [1.PHP性能优化利器：生成器 yield理解，实战读取5G文件导出百万数据](./application/yield)
 
-[2. 使用trait关键字，少用继承多用组合|解决多继承的问题(todo)](./application/trait)
+[2. 使用trait关键字，少用继承多用组合|解决多继承的问题](./application/trait)
 
     优点：
     - 生成器会对PHP应用的性能有非常大的影响

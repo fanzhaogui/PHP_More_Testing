@@ -70,8 +70,13 @@
     right: 0;
     width: 300px;
     height: 15px;
+    cursor: pointer;
     background: red;
+    border-radius: 5px 0 0 0;
     z-index: 1;
+}
+.spa-shell-chat:hover {
+    background: #aa0000;
 }
 .spa-shell-modal {
     margin-top: -200px;

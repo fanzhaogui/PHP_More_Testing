@@ -1,3 +1,22 @@
+# PHP 的全局异常和错误处理
+
+希望有一种机制，把正常代码和补救代码隔离开来，这种机制就是异常处理机制。
+
+    error_reporting(E_ALL);
+    set_error_handler([__CLASS__, 'appError']);
+    set_exception_handler([__CLASS__, 'appException']);
+    register_shutdown_function([__CLASS__, 'appShutdown']);
+
+PHP中的异常和错误区别？
+
+    PHP中的错误属于自身问题，是语法或语言环境存在问题导致的，让编译器无法通过检查和正常运行的情况。
+    
+    1 使用set_error_handler()实现设置自定义错误处理函数
+    2 使用错误处理机制抛出异常实现针对性补救：
+    3 对于致命性的导致脚本停止运行的错误，可以使用register_shundown_function()记录日志：
+    4 对于语法解析错误，只能设置配置文件将错误记录进日志中：
+        log_errors = On
+        error_log = xxx  // 设置错误日志文件目录
 # FunctionalDecomposition
 常用的一些功能模块，不需要借助框架：PHPExcel的导入导出
 

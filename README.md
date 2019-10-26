@@ -70,6 +70,8 @@ PHP中的异常和错误区别？
     - PHP代码运行时节省大量的内存
     - 比较适合计算大量的数据
 
+[3. 如何优雅的处理错误和异常](index.php)
+
 > Composer Package
 
 - [图片处理] `https://packagist.org/packages/kosinix/grafika`

@@ -69,3 +69,9 @@ PHP中的异常和错误区别？
     - 生成器会对PHP应用的性能有非常大的影响
     - PHP代码运行时节省大量的内存
     - 比较适合计算大量的数据
+
+> Composer Package
+
+- [图片处理] `https://packagist.org/packages/kosinix/grafika`
+- [laravel的orm] `illuminate/database`
+- [php操作office] `phpoffice/phpspreadsheet`

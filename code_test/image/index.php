@@ -50,7 +50,7 @@ $images = scanfiles($dir);
 
 // echo "<pre>";
 // print_r($files);
- $images = [];
+// $images = [];
 ?>
 
 <!doctype html>
@@ -75,10 +75,10 @@ $images = scanfiles($dir);
 <body>
 <?php
 require_once __DIR__ ."/../../class/Avatar.php";
-    $fileName = "../../vendor/grafika/handler-img/lena.png";
+    // $fileName = "../../vendor/grafika/handler-img/lena.png";
 //
-    $avatar = new Avatar($fileName, '#FF0000', 200);
-    $avatar->show();
+    // $avatar = new Avatar($fileName, '#FF0000', 200);
+    // $avatar->show();
 
 ?>
 <hr>

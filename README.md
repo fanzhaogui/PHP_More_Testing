@@ -75,3 +75,4 @@ PHP中的异常和错误区别？
 - [图片处理] `https://packagist.org/packages/kosinix/grafika`
 - [laravel的orm] `illuminate/database`
 - [php操作office] `phpoffice/phpspreadsheet`
+- [php也能爬虫]`jaeger/querylist`

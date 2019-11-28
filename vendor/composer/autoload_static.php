@@ -80,10 +80,15 @@ class ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Container\\' => 14,
             'PhpOffice\\PhpSpreadsheet\\' => 25,
+            'PalePurple\\RateLimit\\' => 21,
         ),
         'M' => 
         array (
             'Matrix\\' => 7,
+        ),
+        'L' => 
+        array (
+            'Lcobucci\\JWT\\' => 13,
         ),
         'I' => 
         array (
@@ -91,6 +96,10 @@ class ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3
             'Illuminate\\Database\\' => 20,
             'Illuminate\\Contracts\\' => 21,
             'Illuminate\\Container\\' => 21,
+        ),
+        'G' => 
+        array (
+            'Grafika\\' => 8,
         ),
         'D' => 
         array (
@@ -123,9 +132,17 @@ class ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
         ),
+        'PalePurple\\RateLimit\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/palepurple/rate-limit/src',
+        ),
         'Matrix\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
+        ),
+        'Lcobucci\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
         ),
         'Illuminate\\Support\\' => 
         array (
@@ -143,6 +160,10 @@ class ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3
         array (
             0 => __DIR__ . '/..' . '/illuminate/container',
         ),
+        'Grafika\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kosinix/grafika/src/Grafika',
+        ),
         'Doctrine\\Common\\Inflector\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
@@ -157,12 +178,23 @@ class ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3
         0 => __DIR__ . '/..' . '/nesbot/carbon/src',
     );
 
+    public static $prefixesPsr0 = array (
+        'U' => 
+        array (
+            'UpdateHelper\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/kylekatarnls/update-helper/src',
+            ),
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3::$prefixDirsPsr4;
             $loader->fallbackDirsPsr4 = ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

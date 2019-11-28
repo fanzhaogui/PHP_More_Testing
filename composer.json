@@ -2,6 +2,11 @@
     "require": {
         "phpoffice/phpspreadsheet": "^1.6",
         "illuminate/database": "^5.5",
-        "kosinix/grafika": "^2.0"
+        "kosinix/grafika": "^2.0",
+        "lcobucci/jwt": "^3.3",
+        "palepurple/rate-limit": "^2.0"
+    },
+    "require_dev" : {
+        "phpunit/phpunit": "^6"
     }
 }

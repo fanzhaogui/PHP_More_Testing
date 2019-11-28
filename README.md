@@ -78,3 +78,5 @@ PHP中的异常和错误区别？
 - [laravel的orm] `illuminate/database`
 - [php操作office] `phpoffice/phpspreadsheet`
 - [php也能爬虫]`jaeger/querylist`
+- [请求限制-用于接口] `palepurple/rate-limit`
+- [JWT 接口] `lcobucci/jwt`

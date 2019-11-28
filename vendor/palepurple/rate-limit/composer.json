@@ -1,0 +1,51 @@
+{
+  "type": "library",
+  "name": "palepurple/rate-limit",
+  "description": "PHP rate limiting library with Token Bucket Algorithm, originally touhonoob/rate-limit",
+  "version": "2.0.2",
+  "require": {
+    "php": ">=5.6"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^2.7",
+    "jakub-onderka/php-parallel-lint": "^1.0",
+    "php" : ">7.0",
+    "phpunit/phpunit": "^6.0",
+    "predis/predis": "^1.1",
+    "psr/cache": "^1.0",
+    "tedivm/stash": "^0.14",
+    "vimeo/psalm": "*"
+  },
+  "suggest": {
+    "tedivm/stash": "^0.14",
+    "predis/predis": "^1.1",
+    "ext-redis": "^2.2",
+    "ext-apc": "^4.0",
+    "ext-apcu": "^4.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "David Goodwin",
+      "email": "david@palepurple.co.uk"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PalePurple\\RateLimit\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PalePurple\\RateLimit\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "build" : [ "@lint", "@check-format", "@psalm", "@test" ],
+    "psalm" : "@php ./vendor/bin/psalm src",
+    "lint": "@php ./vendor/bin/parallel-lint --exclude vendor/ .",
+    "check-format": "@php ./vendor/bin/php-cs-fixer fix --ansi --dry-run --diff",
+    "format": "@php ./vendor/bin/php-cs-fixer fix --ansi",
+    "test": "@php ./vendor/bin/phpunit -c tests/phpunit.xml tests/ "
+  }
+}

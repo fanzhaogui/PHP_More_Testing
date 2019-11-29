@@ -20,7 +20,9 @@ function apiRateLimit($limit_tag = '')
             $limit_tag = md5(get_client_ip() . $_SERVER['HTTP_USER_AGENT']);
         }
         $rateLimit_num = 6;
-        $request_time  = 6;         //默认每分钟60次
+        $request_time  = 6;         // 这里解释为 1 ($rateLimiit_num / $request_time)秒中一次的频率更合适
+        // 你可以更改以上两个数次，进行简单的验证
+
         $rate_key      = 'apiRate:';
         $redis         = (new MyRedis())->getInstance();
         $adapter       = new RedisAdapter($redis);

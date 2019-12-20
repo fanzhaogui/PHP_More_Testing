@@ -1,3 +1,7 @@
+## Nginx 502 Bad Gateway
+
+https://blog.51cto.com/nanchunle/1657410
+
 # PHP 的全局异常和错误处理
 
 希望有一种机制，把正常代码和补救代码隔离开来，这种机制就是异常处理机制。

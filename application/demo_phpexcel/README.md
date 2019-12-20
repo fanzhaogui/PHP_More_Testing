@@ -1,3 +1,8 @@
+## 参考
+
+[spreadsheet的更多用法范例](https://www.helloweba.net/php/564.html)
+
+
 ### 大量数据的导入和导出
 
 > 问题

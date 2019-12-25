@@ -76,3 +76,6 @@ register_shutdown_function("Handle::appShutdown");
 // 模拟一个未捕捉到的异常
 // throw new Exception('there is an exception!');
 
+require __DIR__."/vendor/autoload.php";
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+require __DIR__ . '/vendor/phpoffice/phpspreadsheet/samples/Header.php';

@@ -12,6 +12,7 @@
 <a href="import.php">导入</a><br><br>
 <a href="exportMore.php">csv导出</a><br><br>
 <a href="exportMore2.php">csv多文件压缩包导出</a><br><br>
+<a href="doc.php">PHP将html写入doc文件</a><br><br>
 </body>
 </html>
 

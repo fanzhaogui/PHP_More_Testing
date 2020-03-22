@@ -7,7 +7,7 @@
 
 ## 概述
 // 有时被称作 发布/订阅 模式，定义了一种一对多
-// subject 被观察查的主题
+// subject 被观察的主题
 // observer 负者观察的，在得到主题通知时，更新自己
 // SplSubject 类维护了一个特定状态，当这个状态发生变化时，他就会调用notify()方法，当调用notify()方法的时候，所有
 // 之前的使用的attach()方法注册的SplObserver实例的update()方法都会被调用

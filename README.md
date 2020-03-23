@@ -86,3 +86,10 @@ PHP中的异常和错误区别？
 - [php也能爬虫]`jaeger/querylist`
 - [请求限制-用于接口] `palepurple/rate-limit`
 - [JWT 接口] `lcobucci/jwt`
+
+
+> 知识点
+
+- [设计模式图解] `https://www.processon.com/view/link/5b0ba200e4b07febcd1d1fa4`
+
+  代码目录：`/code_test/pattern/`

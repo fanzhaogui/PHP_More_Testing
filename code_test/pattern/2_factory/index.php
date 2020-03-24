@@ -37,11 +37,22 @@
 //echo $operation->getResult();
 
 /*v4 简单工厂: 不需要判断，但增加了工作量，形成了特殊的代码重复 */
-require_once '2_2_FactoryOperation/Factory.php';
-require_once '2_2_FactoryOperation/Operation.php';
-require_once '2_2_FactoryOperation/AddOperation.php';
-require_once '2_2_FactoryOperation/AddFactory.php';
-$addOperate = (new AddFactory())->create();
-$addOperate->setLeft(1);
-$addOperate->setRight(2);
-echo $addOperate->getResult() . '<br>';
+//require_once '2_2_FactoryOperation/Factory.php';
+//require_once '2_2_FactoryOperation/Operation.php';
+//require_once '2_2_FactoryOperation/AddOperation.php';
+//require_once '2_2_FactoryOperation/AddFactory.php';
+//$addOperate = (new AddFactory())->create();
+//$addOperate->setLeft(1);
+//$addOperate->setRight(2);
+//echo $addOperate->getResult() . '<br>';
+
+/*v5 抽象工厂 */
+require_once '2_3_abstract_factory/Factory.php';
+require_once '2_3_abstract_factory/MySQLFactory.php';
+require_once '2_3_abstract_factory/User.php';
+require_once '2_3_abstract_factory/MySQLUser.php';
+// 通过工厂创建具体流水线，通过流水线生成
+$mysqlFactory = new MySQLFactory();
+$user = $mysqlFactory->createUser();
+$user->insert();
+$user->select();

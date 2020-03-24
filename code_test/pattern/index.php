@@ -11,17 +11,19 @@
 
 
 /*20 观察者模式*/
-require_once '21_observer/MessageSubject.php';
-require_once '21_observer/WeixinSender.php';
-require_once '21_observer/SMSSender.php';
-require_once '21_observer/MailSender.php';
+//require_once '21_observer/MessageSubject.php';
+//require_once '21_observer/WeixinSender.php';
+//require_once '21_observer/SMSSender.php';
+//require_once '21_observer/MailSender.php';
 // 主题
-$message = new MessageSubject();
+//$message = new MessageSubject();
 // 订阅
-$message->attach(new WeixinSender());
-$message->attach(new SMSSender());
-$message->attach(new MailSender());
+//$message->attach(new WeixinSender());
+//$message->attach(new SMSSender());
+//$message->attach(new MailSender());
 // 设置通知信息
-$message->setMessage('HI, welcome to my site');
+//$message->setMessage('HI, welcome to my site');
 // 通知
-$message->notify();
+//$message->notify();
+
+require_once '4_adapter/Adapter_V4.php';

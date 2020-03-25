@@ -112,7 +112,7 @@ class TwoAdapter implements TwoTarget
 		if ($type == 0) {
 			return $this->adaptee->closeMouth();
 		}
-		return $this->adaptee->closeMouth();
+		return $this->adaptee->openMouth();
 	}
 }
 

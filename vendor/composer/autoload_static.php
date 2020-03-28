@@ -70,6 +70,10 @@ class ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3
     );
 
     public static $prefixLengthsPsr4 = array (
+        'i' => 
+        array (
+            'ipip\\db\\' => 8,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -112,6 +116,10 @@ class ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3
     );
 
     public static $prefixDirsPsr4 = array (
+        'ipip\\db\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ipip/db/src/ipip/db',
+        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -188,6 +196,10 @@ class ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3
         ),
     );
 
+    public static $classMap = array (
+        'Browser' => __DIR__ . '/..' . '/cbschuld/browser.php/lib/Browser.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
@@ -195,6 +207,7 @@ class ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3
             $loader->prefixDirsPsr4 = ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3::$prefixDirsPsr4;
             $loader->fallbackDirsPsr4 = ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3::$fallbackDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3::$classMap;
 
         }, null, ClassLoader::class);
     }

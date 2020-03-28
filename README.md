@@ -65,6 +65,8 @@ PHP中的异常和错误区别？
 
 [5. MySql按分钟，小时，天，月，年进行统计查询](./application/statis/README.md)
 
+[6.实践php+mysql处理分表](./application/mysql)
+
 > 相关概念
 
 [1.PHP性能优化利器：生成器 yield理解，实战读取5G文件导出百万数据](./application/yield)
@@ -86,6 +88,8 @@ PHP中的异常和错误区别？
 - [php也能爬虫]`jaeger/querylist`
 - [请求限制-用于接口] `palepurple/rate-limit`
 - [JWT 接口] `lcobucci/jwt`
+- [浏览器相关信息] `cbschuld/browser.php`
+- [IP地址] `ipip/db`
 
 
 > 知识点

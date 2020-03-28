@@ -14,6 +14,11 @@ class SimpleDb
     // 当前数据库的连接实例
     static private $_instance = null;
 
+	/**
+	 * @param array $config
+	 *
+	 * @return Illuminate\Database\Capsule\Manager
+	 */
     static public function getInstance($config = array())
     {
         $md5 = md5(serialize($config));

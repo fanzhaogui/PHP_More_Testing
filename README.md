@@ -86,6 +86,8 @@ PHP中的异常和错误区别？
 - [php也能爬虫]`jaeger/querylist`
 - [请求限制-用于接口] `palepurple/rate-limit`
 - [JWT 接口] `lcobucci/jwt`
+- [浏览器相关信息] `cbschuld/browser.php`
+- [IP地址] `ipip/db`
 
 
 > 知识点

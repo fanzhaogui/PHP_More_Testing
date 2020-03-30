@@ -54,6 +54,24 @@ class User implements SplSubject
 		}
 	}
 
+	// 设置用户的信息
+	public function getUserInfo()
+    {
+        $user = [
+            'email'    => $this->email,
+            'username' => $this->username,
+            'mobile'   => $this->mobile,
+            'password' => $this->password,
+        ];
+        return $user;
+    }
+
+    // 对应getUserInfo函数，设置用户的信息
+    public function setUserInfo()
+    {
+
+    }
+
 	public function create()
 	{
 		echo __METHOD__, PHP_EOL;

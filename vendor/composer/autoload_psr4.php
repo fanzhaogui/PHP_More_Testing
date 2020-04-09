@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'ipip\\db\\' => array($vendorDir . '/ipip/db/src/ipip/db'),
+    'Vtiful\\Kernel\\' => array($vendorDir . '/viest/php-ext-xlswriter-ide-helper/src'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
     'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),

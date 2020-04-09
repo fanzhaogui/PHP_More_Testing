@@ -6,7 +6,8 @@
         "lcobucci/jwt": "^3.3",
         "palepurple/rate-limit": "^2.0",
         "cbschuld/browser.php": "^1.9",
-        "ipip/db": "^1.0"
+        "ipip/db": "^1.0",
+        "viest/php-ext-xlswriter-ide-helper": "dev-master"
     },
     "require_dev" : {
         "phpunit/phpunit": "^6"

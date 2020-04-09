@@ -1257,5 +1257,49 @@
         ],
         "description": "Symfony Translation Component",
         "homepage": "https://symfony.com"
+    },
+    {
+        "name": "viest/php-ext-xlswriter-ide-helper",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/viest/php-ext-xlswriter-ide-helper.git",
+            "reference": "47f844abc1dbca175fcb6d5069b7b9445594d05e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/viest/php-ext-xlswriter-ide-helper/zipball/47f844abc1dbca175fcb6d5069b7b9445594d05e",
+            "reference": "47f844abc1dbca175fcb6d5069b7b9445594d05e",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "php": ">=7"
+        },
+        "time": "2020-01-16T03:05:03+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Vtiful\\Kernel\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "viest",
+                "email": "wjx@php.net"
+            }
+        ],
+        "description": "PHP Extension Xlswriter IDE Helper"
     }
 ]

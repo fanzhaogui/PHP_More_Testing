@@ -74,6 +74,10 @@ class ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3
         array (
             'ipip\\db\\' => 8,
         ),
+        'V' => 
+        array (
+            'Vtiful\\Kernel\\' => 14,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -119,6 +123,10 @@ class ComposerStaticInit0e8656201ec6f8b949cd58ebbdce8fc3
         'ipip\\db\\' => 
         array (
             0 => __DIR__ . '/..' . '/ipip/db/src/ipip/db',
+        ),
+        'Vtiful\\Kernel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/viest/php-ext-xlswriter-ide-helper/src',
         ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (

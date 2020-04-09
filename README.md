@@ -24,33 +24,30 @@ PHP中的异常和错误区别？
 # FunctionalDecomposition
 常用的一些功能模块，不需要借助框架：PHPExcel的导入导出
 
-> composer 的常用命令
+### composer
 
-- 创建 composer.json文件，并运行基础信息配置
- 
-      composer init 
-    
-- search 搜索
- 
-        composer search phpexcel
-        还是去[官网](https://packagist.org)来的实在
-    
-- install 安装
-   
-        先在composer.json配置中添加依赖库
-        composer instasll
-    
-- update 更新
+Composer : php > 5.3，依赖管理工具。它允许你声明项目所依赖的代码库，它会在你的项目中为你安装他们。Composer 不是一个包管理器。它涉及 “packages”和“libraries”，但它在每一个项目的基础上进行管理，在你项目的某个目录（如vender）中进行安装。默认情况下它不会再全局安装任何东西。因此，这仅仅是一个依赖管理。
 
-        composer update 
-- require 申明依赖
+> 可以这么理解，composer是一个实现了自动加载的框架，它可以通过配置的声明，下载相应的依赖，代码库，并通过配置，使其能psr-4规范被正确的自动引入，详细的文档可查看composer文档：https://github.com/5-say/composer-doc-cn
 
-        composer require symfony/http-foundation
+> composer 使用步骤
 
+- 安装composer
+- 创建composer项目，自动生成composer.json
+- 通过composer.json配置需要加载的代码库
+- 通过`composer install`下载代码库，依赖
+- 框架引入composer的autoload.php
+- 实现自动加载代码
 
-- remove 移除依赖包 
+| 命令                      | 解释                                                         |
+| :------------------------ | :----------------------------------------------------------- |
+| composer install          | 安装包，根据composer.json                                    |
+| composer update           | 更新包，升级composer.json的所有代码库                        |
+| composer search [keyword] | 搜索包，搜索composer可用的包                                 |
+| composer require 包名称   | 引入包，会在composer.json新增一条包配置，并下载              |
+| composer remove 包名称    | 删除包                                                       |
+| composer dump-autoload    | 生成当前命名空间与类库文件路径的一个映射，运行时加载会直接读取这个映射，加快文件的读取速度 |
 
-        composer remove twbs/bootstrap
 
 
 > Demo Menus 

@@ -40,6 +40,18 @@ PHP中的错误属于自身问题，是语法或语言环境存在问题导致�
     - PHP代码运行时节省大量的内存
     - 比较适合计算大量的数据
 
+todo
+
+导出的更好用的方式
+
+1. PHP >= 7.0
+
+    更好的导出，>= PHP7.0，扩展库 https://gitee.com/viest/php-ext-xlswriter
+    window下载：https://blog.csdn.net/szulilin/article/details/90722808
+    使用手册： https://xlswriter-docs.viest.me/en/kuai-su-shang-shou/create-file
+2. PHP >= 5.2 
+
+    https://blog.csdn.net/szulilin/article/details/96282461?utm_medium=distribute.pc_relevant.none-task-blog-title-1&spm=1001.2101.3001.4242
 
 ## 二、 Demo Menus 
 
